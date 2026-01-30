@@ -3,7 +3,7 @@ import '../models/anime.dart';
 final List<Anime> animeList = [
   Anime(
     title: "Sakamoto Days",
-    image: "assets/images/Sakamoto days.jpg",
+    image: "/assets/images/Sakamoto Days.jpg",
     rating: 8.2,
     genres: ["Action", "Comedy", "Shounen"],
 description:

@@ -27,14 +27,33 @@ class AnimeCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // IMAGE
+            // IMAGE FROM NETWORK (AniList)
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
+              child: Image.network(
                 anime.image,
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
+                loadingBuilder: (context, child, progress) {
+                  if (progress == null) return child;
+                  return Container(
+                    color: Colors.grey[900],
+                    child: const Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[900],
+                    child: const Icon(
+                      Icons.broken_image,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                  );
+                },
               ),
             ),
 
